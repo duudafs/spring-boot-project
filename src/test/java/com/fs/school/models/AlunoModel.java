@@ -14,7 +14,7 @@ public class AlunoModel {
     private String endereco;
     private String email;
 
-    public AlunoModel() {
+    public AlunoModel () {
 
     }
 

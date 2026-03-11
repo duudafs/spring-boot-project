@@ -13,16 +13,27 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
+    public List<AlunoModel> findAll(){
+        return alunoRepository.findAll();
+    }
+
     public AlunoModel criarAluno(AlunoModel alunoModel){
          return alunoRepository.save(alunoModel);
     }
 
-    public List<AlunoModel> buscarTodosAlunos(){
-        return alunoRepository.findAll();
+    public AlunoModel buscarId (Long id){
+        return alunoRepository.findById(id).get();
     }
-
     public void deletarAluno (Long id){
         alunoRepository.deleteById(id);
     }
 
+    public AlunoModel atualizarAluno (Long id, AlunoModel alunoModel){
+        AlunoModel newAluno = alunoRepository.findById(id).get();
+        newAluno.setNome(alunoModel.getNome());
+        return alunoRepository.save(newAluno);
+    }
+
 }
+
+
